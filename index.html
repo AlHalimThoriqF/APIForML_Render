@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Student Placement Prediction</title>
+    <title>Healthcare Billing Prediction</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -14,14 +14,12 @@
             border: 1px solid #ccc;
             border-radius: 10px;
         }
-        .form-container input {
+        .form-container input, .form-container select {
             width: 100%;
             padding: 10px;
             margin: 5px 0 20px 0;
-            display: inline-block;
             border: 1px solid #ccc;
             border-radius: 5px;
-            box-sizing: border-box;
         }
         .form-container input[type="submit"] {
             background-color: #4CAF50;
@@ -41,25 +39,36 @@
 </head>
 <body>
     <div class="form-container">
-        <h2>Student Placement Prediction</h2>
+        <h2>Healthcare Billing Prediction</h2>
         <form action="/predict" method="post">
-            <label for="IQ">IQ:</label>
-            <input type="number" name="IQ" required>
-            
-            <label for="CGPA">CGPA:</label>
-            <input type="number" step="0.01" name="CGPA" required>
-            
-            <label for="10th_Marks">10th Marks:</label>
-            <input type="number" name="10th_Marks" required>
-            
-            <label for="12th_Marks">12th Marks:</label>
-            <input type="number" name="12th_Marks" required>
-            
-            <label for="Communication_Skills">Communication Skills:</label>
-            <input type="number" step="0.01" name="Communication_Skills" required>
-            
+
+            <label>Age:</label>
+            <input type="number" name="Age" required>
+
+            <label>Gender:</label>
+            <select name="Gender" required>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+            </select>
+
+            <label>Blood Type:</label>
+            <select name="Blood Type" required>
+                <option value="A+">A+</option>
+                <option value="A-">A-</option>
+                <option value="B+">B+</option>
+                <option value="B-">B-</option>
+                <option value="O+">O+</option>
+                <option value="O-">O-</option>
+                <option value="AB+">AB+</option>
+                <option value="AB-">AB-</option>
+            </select>
+
+            <label>Medical Condition:</label>
+            <input type="text" name="Medical Condition" required>
+
             <input type="submit" value="Predict">
         </form>
+
         {% if prediction_text %}
         <div class="result">{{ prediction_text }}</div>
         {% endif %}
